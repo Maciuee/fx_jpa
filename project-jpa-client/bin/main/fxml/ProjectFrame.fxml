@@ -30,8 +30,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextField fx:id="txtSzukaj" onAction="#onActionBtnSzukaj" />
-                  <Button mnemonicParsing="false" text="Szukaj" GridPane.columnIndex="1" />
+                  <TextField fx:id="txtSzukaj" />
+                  <Button mnemonicParsing="false" onAction="#onActionBtnSzukaj" text="Szukaj" GridPane.columnIndex="1" />
                   <Label text="Rozmiar strony:" GridPane.columnIndex="2" />
                   <ChoiceBox fx:id="cbPageSizes" prefWidth="150.0" GridPane.columnIndex="3" />
                   <Button mnemonicParsing="false" onAction="#onActionBtnDodaj" text="Dodaj" GridPane.columnIndex="4" />

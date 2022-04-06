@@ -116,7 +116,7 @@ edytujProjekt(getCurrentProjekt());
 });
 btnRemove.setOnAction(event -> {
 //TODO
-//usunProjekt(getCurrentProjekt());
+	
 });
 pane = new GridPane();
 pane.setAlignment(Pos.CENTER);

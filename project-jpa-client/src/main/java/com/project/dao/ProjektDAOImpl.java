@@ -30,7 +30,16 @@ public void setProjekt(Projekt projekt) {
 
  @Override
 public void deleteProjekt(Integer projektId) {
- // TODO
+	 Projekt projekt = null;
+	 EntityManager entityManager = JPAUtil.getEntityManager();
+	 
+	 try {
+	 projekt = entityManager.find(Projekt.class, projektId);
+	 entityManager.remove(projekt);
+	 
+	 } finally {
+	 entityManager.close();
+	 }
 }
 
  @Override
