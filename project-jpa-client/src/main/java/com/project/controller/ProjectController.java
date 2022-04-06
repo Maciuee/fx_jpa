@@ -223,10 +223,12 @@ private void onActionBtnPierwsza(ActionEvent event) {
 @FXML
 private void onActionBtnOstatnia(ActionEvent event) {
 }
+
 @FXML
 private void onActionBtnDodaj(ActionEvent event) {
 	edytujProjekt(new Projekt());
 }
+
 private void edytujProjekt(Projekt projekt) {
 Dialog<Projekt> dialog = new Dialog<>();
 dialog.setTitle("Edycja");
@@ -242,34 +244,36 @@ Label lblOpis = getRightLabel("Opis: ");
 Label lblDataCzasUtworzenia = getRightLabel("Data utworzenia: ");
 Label lblDataOddania = getRightLabel("Data oddania: ");
 Label txtId = new Label();
-if (projekt.getProjektId() != null)
+	if (projekt.getProjektId() != null)
 txtId.setText(projekt.getProjektId().toString());
 TextField txtNazwa = new TextField();
-if (projekt.getNazwa() != null)
+	if (projekt.getNazwa() != null)
 txtNazwa.setText(projekt.getNazwa());
 TextArea txtOpis = new TextArea();
 txtOpis.setPrefRowCount(6);
 txtOpis.setPrefColumnCount(40);
 txtOpis.setWrapText(true);
-if (projekt.getOpis() != null)
+	if (projekt.getOpis() != null)
 txtOpis.setText(projekt.getOpis());
 Label txtDataUtworzenia = new Label();
-if (projekt.getDataCzasUtworzenia() != null)
+	if (projekt.getDataCzasUtworzenia() != null)
 txtDataUtworzenia.setText(dateTimeFormater.format(projekt.getDataCzasUtworzenia()));
 DatePicker dtDataOddania = new DatePicker();
 dtDataOddania.setPromptText("RRRR-MM-DD");
 dtDataOddania.setConverter(new StringConverter<LocalDate>() {
-@Override
+
+	@Override
 public String toString(LocalDate date) {
 return date != null ? dateFormatter.format(date) : null;
 }
-@Override
+
+	@Override
 public LocalDate fromString(String text) {
 return text == null || text.trim().isEmpty() ? null : LocalDate.parse(text, dateFormatter);
 }
 });
 dtDataOddania.getEditor().focusedProperty().addListener((obsValue, oldFocus, newFocus) -> {
-if (!newFocus) {
+		if (!newFocus) {
 try {
 dtDataOddania.setValue(dtDataOddania.getConverter().fromString(
 dtDataOddania.getEditor().getText()));
@@ -303,23 +307,23 @@ dialog.getDialogPane().getButtonTypes().add(buttonTypeOk);
 dialog.getDialogPane().getButtonTypes().add(buttonTypeCancel);
 dialog.setResultConverter(new Callback<ButtonType, Projekt>() {
 @Override
-public Projekt call(ButtonType butonType) {
-if (butonType == buttonTypeOk) {
-projekt.setNazwa(txtNazwa.getText().trim());
-projekt.setOpis(txtOpis.getText().trim());
-projekt.setDataOddania(dtDataOddania.getValue());
-return projekt;
+	public Projekt call(ButtonType butonType) {
+	if (butonType == buttonTypeOk) {
+		projekt.setNazwa(txtNazwa.getText().trim());
+		projekt.setOpis(txtOpis.getText().trim());
+		projekt.setDataOddania(dtDataOddania.getValue());
+		return projekt;
 }
-return null;
+	return null;
 }
 });
 Optional<Projekt> result = dialog.showAndWait();
-if (result.isPresent()) {
+	if (result.isPresent()) {
 wykonawca.execute(() -> {
 try {
 projektDAO.setProjekt(projekt);
 Platform.runLater(() -> {
-if (tblProjekt.getItems().contains(projekt)) {
+	if (tblProjekt.getItems().contains(projekt)) {
 tblProjekt.refresh();
 } else {
 tblProjekt.getItems().add(0, projekt);
