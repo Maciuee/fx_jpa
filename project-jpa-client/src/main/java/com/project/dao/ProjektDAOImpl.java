@@ -26,7 +26,8 @@ public class ProjektDAOImpl implements ProjektDAO {
 
  @Override
 public void setProjekt(Projekt projekt) {
- // TODO
+	 EntityManager entityManager = JPAUtil.getEntityManager();
+	 entityManager.persist(projekt);
 }
 
  @Override
