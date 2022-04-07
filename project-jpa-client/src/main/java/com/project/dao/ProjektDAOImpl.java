@@ -47,7 +47,9 @@ public void deleteProjekt(Integer projektId) {
  @Override
 public List<Projekt> getProjekty(Integer offset, Integer limit) {
 	 EntityManager entityManager = JPAUtil.getEntityManager();
-	 TypedQuery<Projekt> query = entityManager.createQuery("SELECT p FROM Projekt p ORDER BY p.dataCzasUtworzenia DESC", Projekt.class); query.setFirstResult(offset); query.setMaxResults(limit);
+	 TypedQuery<Projekt> query = entityManager.createQuery("SELECT p FROM Projekt p ORDER BY p.dataCzasUtworzenia DESC", Projekt.class); 
+	 query.setFirstResult(offset); 
+	 query.setMaxResults(limit);
 	 List<Projekt> projekty = query.getResultList();
 	 return null;
 }
