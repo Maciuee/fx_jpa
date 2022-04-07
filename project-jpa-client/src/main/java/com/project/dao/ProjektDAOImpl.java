@@ -51,7 +51,7 @@ public List<Projekt> getProjekty(Integer offset, Integer limit) {
 	 query.setFirstResult(offset); 
 	 query.setMaxResults(limit);
 	 List<Projekt> projekty = query.getResultList();
-	 return null;
+	 return projekty;
 }
 
  @Override

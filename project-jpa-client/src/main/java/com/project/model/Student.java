@@ -28,7 +28,7 @@ private String imie;
 	@Column(nullable = false, length = 100)
 private String nazwisko;
 	
-	@Column(nullable = false, length = 20)
+	@Column(nullable = false, length = 20, unique=true)
 private String nrIndeksu;
 	
 	@Column(length = 50)
