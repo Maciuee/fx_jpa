@@ -16,8 +16,9 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.TestMethodOrder;
-import com.project.model.Projekt;
+
 import com.project.model.Zadanie;
+import com.project.model.Projekt;
 import com.project.model.Student;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ProjektTest {

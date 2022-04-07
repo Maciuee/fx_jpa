@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.project.controller.ProjectController;
 import com.project.dao.ProjektDAO;
 import com.project.dao.ProjektDAOImpl;
-import com.project.model.Projekt;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;

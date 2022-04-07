@@ -4,6 +4,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+
 import com.project.datasource.JPAUtil;
 import com.project.model.Projekt;
 
@@ -44,8 +45,10 @@ public void deleteProjekt(Integer projektId) {
 
  @Override
 public List<Projekt> getProjekty(Integer offset, Integer limit) {
- // TODO
- return null;
+	 EntityManager entityManager = JPAUtil.getEntityManager();
+	 TypedQuery<Projekt> query = entityManager.createQuery("SELECT p FROM Projekt p ORDER BY p.dataCzasUtworzenia DESC", Projekt.class); query.setFirstResult(offset); query.setMaxResults(limit);
+	 List<Projekt> projekty = query.getResultList();
+	 return null;
 }
 
  @Override

@@ -51,7 +51,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class ProjectController {
 	
 private static final Logger logger = LoggerFactory.getLogger(ProjectController.class);
-//Zmienne do obs³ugi stronicowania i wyszukiwania
+//Zmienne do obsÂ³ugi stronicowania i wyszukiwania
 private String search4;
 private Integer pageNo;
 private Integer pageSize;
@@ -85,10 +85,10 @@ public ProjectController() { //Utworzeniu pustego konstruktora jest obligatoryjn
 }
 
 @FXML
-public void initialize() { //Metoda automatycznie wywo³ywana przez JavaFX zaraz po wstrzykniêciu
-search4 = null; //wszystkich komponentów. Uwaga! Wszelkie modyfikacje komponentów
-pageNo = 0; //(np. cbPageSizes) trzeba realizowaæ wewn¹trz tej metody. Nigdy
-pageSize = 10; //nie u¿ywaj do tego celu konstruktora.
+public void initialize() { //Metoda automatycznie wywoÂ³ywana przez JavaFX zaraz po wstrzykniÃªciu
+search4 = null; //wszystkich komponentÃ³w. Uwaga! Wszelkie modyfikacje komponentÃ³w
+pageNo = 0; //(np. cbPageSizes) trzeba realizowaÃ¦ wewnÂ¹trz tej metody. Nigdy
+pageSize = 10; //nie uÂ¿ywaj do tego celu konstruktora.
 cbPageSizes.getItems().addAll(5, 10, 20, 50, 100);
 cbPageSizes.setValue(pageSize);
 
@@ -99,16 +99,16 @@ colDataCzasUtworzenia.setCellValueFactory(new PropertyValueFactory<Projekt, Loca
 ("dataCzasUtworzenia"));
 colDataOddania.setCellValueFactory(new PropertyValueFactory<Projekt, LocalDate>("dataOddania"));
 projekty = FXCollections.observableArrayList();
-//Powi¹zanie tabeli z list¹ typu ObservableList przechowuj¹c¹ projekty
+//PowiÂ¹zanie tabeli z listÂ¹ typu ObservableList przechowujÂ¹cÂ¹ projekty
 tblProjekt.setItems(projekty);
 
 //Utworzenie nowej kolumny
 TableColumn<Projekt, Void> colEdit = new TableColumn<>("Edycja");
 colEdit.setCellFactory(column -> new TableCell<Projekt, Void>() {
 private final GridPane pane;
-{ //Blok inicjalizuj¹cy w anonimowej klasie wewnêtrznej
+{ //Blok inicjalizujÂ¹cy w anonimowej klasie wewnÃªtrznej
 Button btnEdit = new Button("Edycja");
-Button btnRemove = new Button("Usuñ");
+Button btnRemove = new Button("UsuÃ±");
 btnEdit.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 btnRemove.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 btnEdit.setOnAction(event -> {
@@ -138,7 +138,7 @@ setGraphic(empty ? null : pane);
 });
 //Dodanie kolumny do tabeli
 tblProjekt.getColumns().add(colEdit);
-//Ustawienie wzglêdnej szerokoœci poszczególnych kolumn
+//Ustawienie wzglÃªdnej szerokoÅ“ci poszczegÃ³lnych kolumn
 colId.setMaxWidth(5000);
 colNazwa.setMaxWidth(10000);
 colOpis.setMaxWidth(10000);
@@ -160,9 +160,9 @@ setText(dateTimeFormater.format(item));
 
 
 projektDAO = new ProjektDAOImpl();
-wykonawca = Executors.newFixedThreadPool(1); // W naszej aplikacji wystarczy jeden w¹tek do pobierania
-// danych. Przekazanie wiêkszej iloœci takich zadañ do
-loadPage(search4, pageNo, pageSize); // puli jednow¹tkowej powoduje ich kolejkowanie i sukcesywne
+wykonawca = Executors.newFixedThreadPool(1); // W naszej aplikacji wystarczy jeden wÂ¹tek do pobierania
+// danych. Przekazanie wiÃªkszej iloÅ“ci takich zadaÃ± do
+loadPage(search4, pageNo, pageSize); // puli jednowÂ¹tkowej powoduje ich kolejkowanie i sukcesywne
 }
 
 private void loadPage(String search4, Integer pageNo, Integer pageSize) {
@@ -178,24 +178,24 @@ projekty.addAll(projektList);
 });
 }
 } catch (RuntimeException e) {
-String errorInfo = "B³¹d podczas pobierania listy projektów!";
+String errorInfo = "BÂ³Â¹d podczas pobierania listy projektÃ³w!";
 String errorDetails = e.getMessage();
 logger.error("{} ({})", errorInfo, e);
 Platform.runLater(() -> showError(errorInfo, errorDetails));
 }
 });
 }
-/** Metoda pomocnicza do prezentowania u¿ytkownikowi informacji o b³êdach */
+/** Metoda pomocnicza do prezentowania uÂ¿ytkownikowi informacji o bÂ³Ãªdach */
 private void showError(String header, String content) {
 Alert alert = new Alert(AlertType.ERROR);
-alert.setTitle("B³¹d");
+alert.setTitle("BÂ³Â¹d");
 alert.setHeaderText(header);
 alert.setContentText(content);
 alert.showAndWait();
 }
 public void shutdown() {
-// Wystarczy³oby tylko samo wywo³anie metody wykonawca.shutdownNow(), ale mo¿na równie¿, tak jak poni¿ej,
-// zaimplementowaæ wersjê z oczekiwaniem na zakoñczenie wszystkich zadañ wykonywanych w puli w¹tków.
+// WystarczyÂ³oby tylko samo wywoÂ³anie metody wykonawca.shutdownNow(), ale moÂ¿na rÃ³wnieÂ¿, tak jak poniÂ¿ej,
+// zaimplementowaÃ¦ wersjÃª z oczekiwaniem na zakoÃ±czenie wszystkich zadaÃ± wykonywanych w puli wÂ¹tkÃ³w.
 if(wykonawca != null) {
 wykonawca.shutdown();
 try {
@@ -207,7 +207,7 @@ wykonawca.shutdownNow();
 }
 }
 
-//Grupa metod do obs³ugi przycisków
+//Grupa metod do obsÂ³ugi przyciskÃ³w
 @FXML
 private void onActionBtnSzukaj(ActionEvent event) {
 }
@@ -330,7 +330,7 @@ tblProjekt.getItems().add(0, projekt);
 }
 });
 } catch (RuntimeException e) {
-String errorInfo = "B³¹d podczas zapisywania danych projektu!";
+String errorInfo = "BÂ³Â¹d podczas zapisywania danych projektu!";
 String errorDetails = e.getMessage();
 logger.error("{} ({})", errorInfo, e);
 Platform.runLater(() -> showError(errorInfo, errorDetails));
